@@ -1,0 +1,161 @@
+// VARIABLES
+* Type inferencing:
+	* let num = 10;
+* Type Constraints:
+	* let num: number = 10;
+* Constants:
+	const API_URL: string = "https://bob.com";
+* Common Types:
+	* string: "Hello"
+	* number: 123
+	* boolean: true/false
+	* null	 : null
+	* undefined: undefined
+	* any:		 Disables type checking
+	* unknown:	unkown check type before using
+	* void:		function returns no meaninful value
+	* never:	Function never completes normally
+
+* niche sytnax:
+	* let userid: string | number = 123;   : Saying userid can be either string or number
+	* let email: string | undefined; 	   : Optional Value
+	* let numbers: number[] = [1,2,3];	   : Array
+	* let numbers: Array<string> = ["bob", "tom"];
+
+
+
+// FUNCTION SYNTAX
+
+// basic func
+
+	function add(a: number, b: number): number
+	{
+		return a + b;
+	}
+
+// functions with no return value
+
+	function displayMessage(msg: string): void
+	{
+		console.log(msg);
+	}
+
+// Arrow functions
+
+	const multiply = (a: number, b: number): number => {
+		return a * b;
+	};
+
+	const subtract = (a: number, b: number) => a-b;
+
+// Function with default parameter
+
+	function sendMsg(msg: string = "default_message"): string
+	{
+		return msg;
+	}
+
+
+// CLASSES
+* Access modifier:
+	* public: Accessible anywhere
+	* private: Accesible only inside class
+	* protected: Accessible inside class and sub-classes
+
+class User
+{
+	m_name: number; // Attributes/ member variables
+	m_age: string;
+
+	constructor(name: string, age: number) // Runs when object is created
+	{
+		this.m_name = name;
+		this.m_age = age;
+	}
+
+	introduce(): void		// Member function
+	{
+		console.log(`Hello, my name is ${this.m_name} and I am ${this.m_age} years old`);
+	}
+
+	get m_name(): string
+	{
+		return this.m_name;
+	}
+
+	set m_name(name: string)
+	{
+		this.m_name = name;
+	}
+}
+
+// USE OF CLASSES
+
+const user = new User("bob", 10);
+
+user.introduce();
+
+user.m_name = "bob"; // Calls Setter
+console.log(user.m_name); // Calls Getter
+
+
+// INTERFACE: Defines how something is to be implemented
+
+interface Account
+{
+	name: string;
+	studentID: number;
+
+	login(): void;
+
+}
+
+// interface can be implemented by a class think like (ADT)
+
+class Student implements Account
+{
+	name: string;
+	studentID: number;
+
+	constructor(name: string, studentID: number)
+	{
+		this.name = name;
+		this. studentID = studentID;
+	}
+
+
+	login(): void
+	{
+		console.log("Student logged in");
+	}
+
+
+	
+}
+
+// INHERITENCE
+
+
+class Student extends Account
+{
+	name: string;
+	studentID: number;
+
+	constructor(name: string, studentID: number, account_id: number)
+	{
+		super(account_id); // would call accounts constructor passing account_id arg;
+		this.name = name;
+		this. studentID = studentID;
+	}
+
+
+	login(): void
+	{
+		console.log("Student logged in");
+	}
+
+
+	
+}
+
+
